@@ -22,7 +22,7 @@ function Study() {
 
   function restartAlert() {
     let text = "Restart cards?\n\nClick 'cancel' to return to the home page.";
-    if (confirm(text) == true) {
+    if (window.confirm(text) == true) {
       setIndex(0);
       setShowFront(true);
     } else {
