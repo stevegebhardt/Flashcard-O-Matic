@@ -15,19 +15,18 @@ function Layout() {
   return (
     <React.Fragment>
       <Header />
-
       <div className="container">
         {/* TODO: Implement the screen starting here */}
         <Router>
           <Switch>
-            <Route>
-              <Home exact path="/" />
+            <Route exact path="/">
+              <Home />
             </Route>
-            <Route>
-              <Study path="/decks/:deckId/study" />
+            <Route path="/decks/:deckId/study">
+              <Study />
             </Route>
-            <Route>
-              <View path="/decks/:deckId"></View>
+            <Route path="/decks/:deckId">
+              <View />
             </Route>
             <Route>
               <NotFound />

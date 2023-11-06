@@ -25,7 +25,10 @@ function Home() {
         <div className="">
           {decks.map((deck) => {
             return (
-              <div className="container border border-secondary m-1">
+              <div
+                className="container border border-secondary m-1"
+                key={deck.id}
+              >
                 <div className="d-flex justify-content-between">
                   <div>
                     <h2>{deck.name}</h2>
