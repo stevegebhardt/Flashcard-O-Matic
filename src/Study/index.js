@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { readDeck } from "../utils/api";
-import { useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
+import { useParams, Link, useHistory } from "react-router-dom";
 
 function Study() {
   const { deckId } = useParams();
+  const history = useHistory();
 
   const [deck, setDeck] = useState({});
   const [cards, setCards] = useState([]);
+  const [index, setIndex] = useState(0);
+  const [showFront, setShowFront] = useState(true);
 
   useEffect(() => {
     readDeck(deckId)
@@ -17,6 +20,17 @@ function Study() {
       .catch((err) => console.log(err));
   }, []);
 
+  function restartAlert() {
+    let text = "Restart cards?\n\nClick 'cancel' to return to the home page.";
+    if (confirm(text) == true) {
+      setIndex(0);
+      setShowFront(true);
+    } else {
+      history.push("/");
+    }
+  }
+
+  console.log("cards", cards);
   return (
     <React.Fragment>
       <nav aria-label="breadcrumb">
@@ -33,9 +47,37 @@ function Study() {
       <div>
         <h1>Study: {deck.name}</h1>
       </div>
-      {cards.map((card) => (
-        <p key={card.id}>{card.front}</p>
-      ))}
+      <div>
+        {cards.length ? (
+          <React.Fragment>
+            {showFront ? (
+              <React.Fragment>
+                <h1>{cards[index].front}</h1>
+                <button onClick={() => setShowFront(!showFront)}>Flip</button>
+                {index !== cards.length - 1 ? (
+                  <button onClick={() => setIndex(index + 1)}>Next</button>
+                ) : null}
+              </React.Fragment>
+            ) : (
+              <React.Fragment>
+                <h1>{cards[index].back}back</h1>
+                {index !== cards.length - 1 ? (
+                  <button
+                    onClick={() => {
+                      setIndex(index + 1);
+                      setShowFront(!showFront);
+                    }}
+                  >
+                    Next
+                  </button>
+                ) : (
+                  <button onClick={restartAlert}>Next</button>
+                )}
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        ) : null}
+      </div>
     </React.Fragment>
   );
 }
