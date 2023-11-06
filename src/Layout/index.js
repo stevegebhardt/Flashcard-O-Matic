@@ -4,6 +4,7 @@ import NotFound from "./NotFound";
 import Home from "../Home";
 import Study from "../Study";
 import View from "../View";
+import AddCard from "../Add";
 
 import {
   BrowserRouter as Router,
@@ -24,6 +25,9 @@ function Layout() {
             </Route>
             <Route path="/decks/:deckId/study">
               <Study />
+            </Route>
+            <Route path="/decks/:deckId/cards/new">
+              <AddCard />
             </Route>
             <Route path="/decks/:deckId">
               <View />
