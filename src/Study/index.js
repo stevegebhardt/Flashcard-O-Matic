@@ -50,28 +50,49 @@ function Study() {
       <div>
         {cards.length ? (
           <React.Fragment>
-            {showFront ? (
+            {cards.length <= 2 ? (
               <React.Fragment>
-                <h1>{cards[index].front}</h1>
-                <button onClick={() => setShowFront(!showFront)}>Flip</button>
-                {index !== cards.length - 1 ? (
-                  <button onClick={() => setIndex(index + 1)}>Next</button>
-                ) : null}
+                <h1>React Router: Study</h1>
+                <h2>Not enough cards</h2>
+                <p>
+                  You need at least 3 cards to study. There are {cards.length}{" "}
+                  cards in this deck.
+                </p>
+                <Link
+                  to={`/decks/${deck.id}/cards/new`}
+                  className="btn btn-primary"
+                >
+                  Add Cards
+                </Link>
               </React.Fragment>
             ) : (
               <React.Fragment>
-                <h1>{cards[index].back}back</h1>
-                {index !== cards.length - 1 ? (
-                  <button
-                    onClick={() => {
-                      setIndex(index + 1);
-                      setShowFront(!showFront);
-                    }}
-                  >
-                    Next
-                  </button>
+                {showFront ? (
+                  <React.Fragment>
+                    <h1>{cards[index].front}</h1>
+                    <button onClick={() => setShowFront(!showFront)}>
+                      Flip
+                    </button>
+                    {index !== cards.length - 1 ? (
+                      <button onClick={() => setIndex(index + 1)}>Next</button>
+                    ) : null}
+                  </React.Fragment>
                 ) : (
-                  <button onClick={restartAlert}>Next</button>
+                  <React.Fragment>
+                    <h1>{cards[index].back}back</h1>
+                    {index !== cards.length - 1 ? (
+                      <button
+                        onClick={() => {
+                          setIndex(index + 1);
+                          setShowFront(!showFront);
+                        }}
+                      >
+                        Next
+                      </button>
+                    ) : (
+                      <button onClick={restartAlert}>Next</button>
+                    )}
+                  </React.Fragment>
                 )}
               </React.Fragment>
             )}
