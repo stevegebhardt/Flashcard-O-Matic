@@ -17,6 +17,7 @@ function Home() {
     }
   }
 
+  console.log("line 20", decks);
   return (
     <React.Fragment>
       <div className="container w-50">
@@ -24,50 +25,52 @@ function Home() {
           Create Deck
         </Link>
         <div className="">
-          {decks.map((deck) => {
-            return (
-              <div
-                className="container border border-secondary m-1"
-                key={deck.id}
-              >
-                <div className="d-flex justify-content-between">
-                  <div>
-                    <h2>{deck.name}</h2>
+          {decks.length > 0
+            ? decks.map((deck) => {
+                return (
+                  <div
+                    className="container border border-secondary m-1"
+                    key={deck.id}
+                  >
+                    <div className="d-flex justify-content-between">
+                      <div>
+                        <h2>{deck.name}</h2>
+                      </div>
+                      <div>
+                        <p>{deck.cards.length} cards</p>
+                      </div>
+                    </div>
+                    <div>
+                      <p>{deck.description}</p>
+                    </div>
+                    <div className="d-flex justify-content-between m-1">
+                      <div>
+                        <Link
+                          to={`/decks/${deck.id}`}
+                          className="btn btn-secondary m-1"
+                        >
+                          View
+                        </Link>
+                        <Link
+                          to={`/decks/${deck.id}/study`}
+                          className="btn btn-primary m-1"
+                        >
+                          Study
+                        </Link>
+                      </div>
+                      <div>
+                        <button
+                          onClick={() => deleteAlert(deck.id)}
+                          className="btn btn-danger m-1"
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p>{deck.cards.length} cards</p>
-                  </div>
-                </div>
-                <div>
-                  <p>{deck.description}</p>
-                </div>
-                <div className="d-flex justify-content-between m-1">
-                  <div>
-                    <Link
-                      to={`/decks/${deck.id}`}
-                      className="btn btn-secondary m-1"
-                    >
-                      View
-                    </Link>
-                    <Link
-                      to={`/decks/${deck.id}/study`}
-                      className="btn btn-primary m-1"
-                    >
-                      Study
-                    </Link>
-                  </div>
-                  <div>
-                    <button
-                      onClick={() => deleteAlert(deck.id)}
-                      className="btn btn-danger m-1"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+                );
+              })
+            : null}
         </div>
       </div>
     </React.Fragment>
