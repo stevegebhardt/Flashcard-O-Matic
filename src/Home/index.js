@@ -12,6 +12,7 @@ function Home() {
   function deleteAlert() {
     let text = "Delete this deck?\n\nYou will not be able to recover it.";
     if (window.confirm(text) == true) {
+      // need to get deleteDeck working.... 
       deleteDeck;
     }
   }

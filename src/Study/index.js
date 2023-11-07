@@ -18,7 +18,7 @@ function Study() {
         setCards(deck.cards);
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [deckId]);
 
   function restartAlert() {
     let text = "Restart cards?\n\nClick 'cancel' to return to the home page.";
