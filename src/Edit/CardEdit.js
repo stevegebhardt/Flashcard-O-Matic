@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { readCard, readDeck } from "../utils/api";
+import { readCard, readDeck, updateCard } from "../utils/api";
 
-export default function CardEdit() {
+export default function CardEdit({ Breadcrumb }) {
   const { deckId, cardId } = useParams();
 
   const [deck, setDeck] = useState({});
   const [card, setCard] = useState({});
+
+  const initialFormState = {
+    front: "",
+    back: "",
+  };
+  const [formData, setFormData] = useState({ ...initialFormState });
+
+  const handleChange = ({ target }) => {
+    setFormData({ ...formData, [target.name]: target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateCard(formData);
+    setFormData({ ...initialFormState });
+  };
 
   useEffect(() => {
     readDeck(deckId)
@@ -20,22 +36,12 @@ export default function CardEdit() {
   return (
     <div className="container w-75">
       <section>
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to="#">{deck.name}</Link>
-            </li>
-            <li className="breadcrumb-item active">Edit Card {cardId}</li>
-          </ol>
-        </nav>
+        <Breadcrumb deck={deck} cardId={cardId} />
       </section>
       <section>
         <h1>Edit Card</h1>
         <div>
-          <form>
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="front">Front</label>
               <textarea
@@ -43,6 +49,8 @@ export default function CardEdit() {
                 name="front"
                 placeholder={`${card.front}`}
                 className="w-100"
+                onChange={handleChange}
+                value={formData.front}
               ></textarea>
             </div>
             <br />
@@ -53,6 +61,8 @@ export default function CardEdit() {
                 name="back"
                 placeholder={`${card.back}`}
                 className="w-100"
+                onChange={handleChange}
+                value={formData.back}
               ></textarea>
             </div>
             <Link to={`/decks/${deckId}`} className="btn btn-secondary m-1">

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
-import { createCard, readDeck, updateDeck } from "../utils/api";
+import { createCard, readDeck } from "../utils/api";
+import Breadcrumb from "../Breadcrumb";
 
 export default function AddCard() {
   const { deckId } = useParams();
@@ -32,17 +33,7 @@ export default function AddCard() {
 
   return (
     <div className="container">
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link to="#">React Router</Link>
-          </li>
-          <li className="breadcrumb-item active">Add Card</li>
-        </ol>
-      </nav>
+      <Breadcrumb />
       <div>
         <h1>React Router: Add card</h1>
         <div>

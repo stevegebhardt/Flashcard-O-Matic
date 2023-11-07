@@ -8,6 +8,7 @@ import AddCard from "../Add";
 import DeckEdit from "../Edit/DeckEdit";
 import CardEdit from "../Edit/CardEdit";
 import NewDeck from "../NewDeck";
+import Breadcrumb from "../Breadcrumb";
 
 import {
   BrowserRouter as Router,
@@ -24,25 +25,25 @@ function Layout() {
         <Router>
           <Switch>
             <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/decks/:deckId/cards/:cardId/edit">
-              <CardEdit />
+              <Home Breadcrumb={Breadcrumb} />
             </Route>
             <Route path="/decks/:deckId/cards/new">
-              <AddCard />
+              <AddCard Breadcrumb={Breadcrumb} />
+            </Route>
+            <Route path="/decks/:deckId/cards/:cardId/edit">
+              <CardEdit Breadcrumb={Breadcrumb} />
             </Route>
             <Route path="/decks/:deckId/study">
-              <Study />
+              <Study Breadcrumb={Breadcrumb} />
             </Route>
             <Route path="/decks/:deckId/edit">
-              <DeckEdit />
-            </Route>
-            <Route path="/decks/:deckId">
-              <View />
+              <DeckEdit Breadcrumb={Breadcrumb} />
             </Route>
             <Route path="/decks/new">
-              <NewDeck />
+              <NewDeck Breadcrumb={Breadcrumb} />
+            </Route>
+            <Route path="/decks/:deckId">
+              <View Breadcrumb={Breadcrumb} />
             </Route>
             <Route>
               <NotFound />

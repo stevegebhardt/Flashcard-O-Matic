@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { readDeck } from "../utils/api";
 import { useParams, Link, useHistory } from "react-router-dom";
+import Breadcrumb from "../Breadcrumb";
 
 function Study() {
   const { deckId } = useParams();
@@ -33,17 +34,7 @@ function Study() {
   console.log("cards", cards);
   return (
     <React.Fragment>
-      <nav aria-label="breadcrumb">
-        <ol className="breadcrumb">
-          <li className="breadcrumb-item">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="breadcrumb-item">
-            <Link to="#">{deck.name}</Link>
-          </li>
-          <li className="breadcrumb-item active">Study</li>
-        </ol>
-      </nav>
+      <Breadcrumb deck={deck} />
       <div>
         <h1>Study: {deck.name}</h1>
       </div>
