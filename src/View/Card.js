@@ -19,7 +19,7 @@ export default function Card({ card }) {
         <div>{card.back}</div>
         <div className="align-self-end">
           <Link
-            to={`decks/${card.deckId}/cards/${card.id}/edit`}
+            to={`/decks/${card.deckId}/cards/${card.id}/edit`}
             className="btn btn-secondary m-1"
           >
             Edit

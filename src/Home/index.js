@@ -9,11 +9,11 @@ function Home() {
     listDecks().then((data) => setDecks(data));
   }, []);
 
-  function deleteAlert() {
+  function deleteAlert(deckId) {
     let text = "Delete this deck?\n\nYou will not be able to recover it.";
     if (window.confirm(text) == true) {
-      // need to get deleteDeck working.... 
-      deleteDeck;
+      // need to get deleteDeck working....
+      deleteDeck(deckId);
     }
   }
 
@@ -58,7 +58,7 @@ function Home() {
                   </div>
                   <div>
                     <button
-                      onClick={deleteAlert}
+                      onClick={() => deleteAlert(deck.id)}
                       className="btn btn-danger m-1"
                     >
                       Delete

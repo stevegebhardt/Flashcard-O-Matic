@@ -26,7 +26,7 @@ function Layout() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/decks/:deckId/cards/:cardId/new">
+            <Route path="/decks/:deckId/cards/:cardId/edit">
               <CardEdit />
             </Route>
             <Route path="/decks/:deckId/cards/new">
