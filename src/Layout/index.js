@@ -10,11 +10,7 @@ import CardEdit from "../Edit/CardEdit";
 import NewDeck from "../NewDeck";
 import Breadcrumb from "../Breadcrumb";
 
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 
 function Layout() {
   return (
@@ -22,34 +18,32 @@ function Layout() {
       <Header />
       <div className="container">
         {/* TODO: Implement the screen starting here */}
-        <Router>
-          <Switch>
-            <Route exact path="/">
-              <Home Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/:deckId/cards/new">
-              <AddCard Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/:deckId/cards/:cardId/edit">
-              <CardEdit Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/:deckId/study">
-              <Study Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/:deckId/edit">
-              <DeckEdit Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/new">
-              <NewDeck Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route path="/decks/:deckId">
-              <View Breadcrumb={Breadcrumb} />
-            </Route>
-            <Route>
-              <NotFound />
-            </Route>
-          </Switch>
-        </Router>
+        <Switch>
+          <Route exact path="/">
+            <Home Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/:deckId/cards/new">
+            <AddCard Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/:deckId/cards/:cardId/edit">
+            <CardEdit Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/:deckId/study">
+            <Study Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/:deckId/edit">
+            <DeckEdit Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/new">
+            <NewDeck Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route path="/decks/:deckId">
+            <View Breadcrumb={Breadcrumb} />
+          </Route>
+          <Route>
+            <NotFound />
+          </Route>
+        </Switch>
       </div>
     </React.Fragment>
   );

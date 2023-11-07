@@ -58,15 +58,18 @@ function Study() {
             ) : (
               <React.Fragment>
                 {showFront ? (
-                  <React.Fragment>
-                    <h1>{cards[index].front}</h1>
+                  <div className="border border-secondary">
+                    <h2>
+                      Card {index + 1} of {cards.length}
+                    </h2>
+                    <p>{cards[index].front}</p>
                     <button onClick={() => setShowFront(!showFront)}>
                       Flip
                     </button>
-                    {index !== cards.length - 1 ? (
+                    {index === 0 ? null : (
                       <button onClick={() => setIndex(index + 1)}>Next</button>
-                    ) : null}
-                  </React.Fragment>
+                    )}
+                  </div>
                 ) : (
                   <React.Fragment>
                     <h1>{cards[index].back}back</h1>
