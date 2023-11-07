@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom/cjs/react-router-dom.min";
 import { createCard, readDeck } from "../utils/api";
 import Breadcrumb from "../Breadcrumb";
+import CardForm from "../CardForm";
 
 export default function AddCard() {
   const { deckId } = useParams();
 
-  const [deck, setDeck] = useState({ front: "", back: "" });
   const initialFormState = {
     front: "",
     back: "",
@@ -21,7 +21,7 @@ export default function AddCard() {
   };
 
   useEffect(() => {
-    readDeck(deckId).then((deck) => setDeck(deck));
+    readDeck(deckId).then((deck) => setFormData(deck));
   }, []);
 
   const handleSubmit = (e) => {
@@ -37,34 +37,12 @@ export default function AddCard() {
       <div>
         <h1>React Router: Add card</h1>
         <div>
-          <form className="d-flex flex-column" onSubmit={handleSubmit}>
-            <label htmlFor="front">Front</label>
-            <textarea
-              id="front"
-              name="front"
-              placeholder="Front side of card"
-              onChange={handleChange}
-              value={formData.front}
-            ></textarea>
-            <br />
-            <label htmlFor="back">Back</label>
-            <textarea
-              id="back"
-              name="back"
-              placeholder="Back side of card"
-              onChange={handleChange}
-              value={formData.back}
-            ></textarea>
-            <Link
-              to={`/decks/${deck.id}`}
-              className="btn btn-secondary mt-1 mr-1"
-            >
-              Done
-            </Link>
-            <button type="submit" className="btn btn-primary mt-1 mr-1">
-              Save
-            </button>
-          </form>
+          <CardForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+            deckId={deckId}
+          />
         </div>
       </div>
     </div>

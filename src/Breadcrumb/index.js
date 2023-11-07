@@ -3,8 +3,6 @@ import { useLocation, Link } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Breadcrumb({ deck, cardId }) {
   const { pathname } = useLocation();
-  console.log("deck", deck);
-  console.log("cardId", cardId);
 
   return (
     <React.Fragment>
@@ -24,7 +22,14 @@ export default function Breadcrumb({ deck, cardId }) {
         </React.Fragment>
       ) : pathname === "/decks/new" ? (
         <React.Fragment>
-          <nav></nav>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item active">Create deck</li>
+            </ol>
+          </nav>
         </React.Fragment>
       ) : pathname === `/decks/${deck.id}/study` ? (
         <React.Fragment>

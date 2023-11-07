@@ -1,36 +1,44 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { readDeck } from "../utils/api";
+import { readDeck, updateDeck } from "../utils/api";
+import Breadcrumb from "../Breadcrumb";
+import DeckForm from "../DeckForm/DeckForm";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 export default function DeckEdit() {
+  const history = useHistory();
+
   const { deckId } = useParams();
 
-  const [deck, setDeck] = useState({});
+  const [formData, setFormData] = useState({});
+
+  const handleChange = ({ target }) => {
+    setFormData({ ...formData, [target.name]: target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    updateDeck(formData).then(() => history.push("/"));
+  };
 
   useEffect(() => {
     readDeck(deckId)
-      .then((deck) => setDeck(deck))
+      .then((deck) => setFormData(deck))
       .catch((err) => console.log(err));
   }, [deckId]);
 
   return (
     <div>
-      <section>
-        <nav aria-label="breadcrumb">
-          <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <Link to="/">Home</Link>
-            </li>
-            <li className="breadcrumb-item">
-              <Link to="#">{deck.name}</Link>
-            </li>
-            <li className="breadcrumb-item active">Edit Deck</li>
-          </ol>
-        </nav>
-      </section>
+      <section>{/* <Breadcrumb deck={deck} /> */}</section>
       <section>
         <h1>Edit Deck</h1>
-        <div></div>
+        <div>
+          <DeckForm
+            formData={formData}
+            handleChange={handleChange}
+            handleSubmit={handleSubmit}
+          />
+        </div>
       </section>
     </div>
   );

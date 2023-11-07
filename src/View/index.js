@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
 import { deleteDeck } from "../utils/api";
 import Card from "./Card";
+import Breadcrumb from "../Breadcrumb";
 
 function View() {
   const { deckId } = useParams();
@@ -22,7 +23,6 @@ function View() {
   function deleteAlert() {
     let text = "Delete this deck?\n\nYou will not be able to recover it.";
     if (window.confirm(text) == true) {
-      // need to get deleteDeck working....
       deleteDeck(deckId);
     }
   }
@@ -31,14 +31,7 @@ function View() {
     <React.Fragment>
       <div className="container w-75">
         <div>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="breadcrumb-item active">React Router</li>
-            </ol>
-          </nav>
+          <Breadcrumb deck={deck} />
         </div>
         <div>
           <h1>{deck.name}</h1>
