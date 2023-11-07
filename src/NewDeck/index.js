@@ -27,7 +27,7 @@ export default function NewDeck({ Breadcrumb }) {
 
   return (
     <div className="w-75">
-      {/* <Breadcrumb /> */}
+      <Breadcrumb />
       <section>
         <h1>Create Deck</h1>
         <div>

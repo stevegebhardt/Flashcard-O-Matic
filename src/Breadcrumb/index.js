@@ -6,7 +6,18 @@ export default function Breadcrumb({ deck, cardId }) {
 
   return (
     <React.Fragment>
-      {pathname === `/decks/${deck.id}/cards/${cardId}/edit` ? (
+      {pathname === "/decks/new" ? (
+        <React.Fragment>
+          <nav aria-label="breadcrumb">
+            <ol className="breadcrumb">
+              <li className="breadcrumb-item">
+                <Link to="/">Home</Link>
+              </li>
+              <li className="breadcrumb-item active">Create deck</li>
+            </ol>
+          </nav>
+        </React.Fragment>
+      ) : pathname === `/decks/${deck.id}/cards/${cardId}/edit` ? (
         <React.Fragment>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -17,17 +28,6 @@ export default function Breadcrumb({ deck, cardId }) {
                 <Link to="#">{deck.name}</Link>
               </li>
               <li className="breadcrumb-item active">Edit Card {cardId}</li>
-            </ol>
-          </nav>
-        </React.Fragment>
-      ) : pathname === "/decks/new" ? (
-        <React.Fragment>
-          <nav aria-label="breadcrumb">
-            <ol className="breadcrumb">
-              <li className="breadcrumb-item">
-                <Link to="/">Home</Link>
-              </li>
-              <li className="breadcrumb-item active">Create deck</li>
             </ol>
           </nav>
         </React.Fragment>
@@ -45,7 +45,7 @@ export default function Breadcrumb({ deck, cardId }) {
             </ol>
           </nav>
         </React.Fragment>
-      ) : pathname === "/decks/:deckId" ? (
+      ) : pathname === `/decks/${deck.id}` ? (
         <React.Fragment>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -56,7 +56,7 @@ export default function Breadcrumb({ deck, cardId }) {
             </ol>
           </nav>
         </React.Fragment>
-      ) : pathname === "/decks/:deckId/edit" ? (
+      ) : pathname === `/decks/${deck.id}/edit` ? (
         <React.Fragment>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">
@@ -70,7 +70,7 @@ export default function Breadcrumb({ deck, cardId }) {
             </ol>
           </nav>
         </React.Fragment>
-      ) : pathname === "/decks/:deckId/cards/new" ? (
+      ) : pathname === `/decks/${deck.id}/cards/new` ? (
         <React.Fragment>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb">

@@ -10,6 +10,7 @@ export default function DeckEdit() {
 
   const { deckId } = useParams();
 
+  const [deck, setDeck] = useState({});
   const [formData, setFormData] = useState({});
 
   const handleChange = ({ target }) => {
@@ -23,13 +24,18 @@ export default function DeckEdit() {
 
   useEffect(() => {
     readDeck(deckId)
-      .then((deck) => setFormData(deck))
+      .then((deck) => {
+        setFormData(deck);
+        setDeck(deck);
+      })
       .catch((err) => console.log(err));
   }, [deckId]);
 
   return (
     <div>
-      <section>{/* <Breadcrumb deck={deck} /> */}</section>
+      <section>
+        <Breadcrumb deck={deck} />
+      </section>
       <section>
         <h1>Edit Deck</h1>
         <div>

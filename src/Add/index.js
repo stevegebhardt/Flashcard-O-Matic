@@ -12,6 +12,7 @@ export default function AddCard() {
     back: "",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
+  const [deck, setDeck] = useState({});
 
   const handleChange = ({ target }) => {
     setFormData({
@@ -21,7 +22,10 @@ export default function AddCard() {
   };
 
   useEffect(() => {
-    readDeck(deckId).then((deck) => setFormData(deck));
+    readDeck(deckId).then((deck) => {
+      setFormData(deck);
+      setDeck(deck);
+    });
   }, []);
 
   const handleSubmit = (e) => {
@@ -33,7 +37,7 @@ export default function AddCard() {
 
   return (
     <div className="container">
-      <Breadcrumb />
+      <Breadcrumb deck={deck} />
       <div>
         <h1>React Router: Add card</h1>
         <div>

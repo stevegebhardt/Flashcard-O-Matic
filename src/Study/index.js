@@ -31,7 +31,6 @@ function Study() {
     }
   }
 
-  console.log("cards", cards);
   return (
     <React.Fragment>
       <Breadcrumb deck={deck} />

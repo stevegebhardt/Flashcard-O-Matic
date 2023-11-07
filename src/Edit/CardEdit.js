@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  Link,
   useParams,
   useHistory,
 } from "react-router-dom/cjs/react-router-dom.min";
@@ -12,7 +11,6 @@ export default function CardEdit({ Breadcrumb }) {
   const history = useHistory();
 
   const [deck, setDeck] = useState({});
-  const [card, setCard] = useState({});
 
   const [formData, setFormData] = useState({});
 
@@ -32,7 +30,6 @@ export default function CardEdit({ Breadcrumb }) {
     readCard(cardId)
       .then((card) => {
         setFormData(card);
-        setCard(card);
       })
       .catch((err) => console.log(err));
   }, [deckId]);
