@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { readDeck } from "../utils/api";
+import { deleteDeck } from "../utils/api";
 import Card from "./Card";
 
 function View() {
