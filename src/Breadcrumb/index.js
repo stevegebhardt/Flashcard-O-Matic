@@ -78,7 +78,7 @@ export default function Breadcrumb({ deck, cardId }) {
                 <Link to="/">Home</Link>
               </li>
               <li className="breadcrumb-item">
-                <Link to="#">React Router</Link>
+                <Link to="#">{deck.name}</Link>
               </li>
               <li className="breadcrumb-item active">Add Card</li>
             </ol>

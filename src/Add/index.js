@@ -8,8 +8,8 @@ export default function AddCard() {
   const { deckId } = useParams();
 
   const initialFormState = {
-    front: "",
-    back: "",
+    front: "Front side of card",
+    back: "Back side of card",
   };
   const [formData, setFormData] = useState({ ...initialFormState });
   const [deck, setDeck] = useState({});
@@ -39,7 +39,7 @@ export default function AddCard() {
     <div className="container">
       <Breadcrumb deck={deck} />
       <div>
-        <h1>React Router: Add card</h1>
+        <h1>{deck.name}: Add card</h1>
         <div>
           <CardForm
             formData={formData}
