@@ -10,4 +10,8 @@ I went above and beyond the requirements and built a sort of JSX template if-you
 
 On a final note, CSS was NOT a graded component. However, I used Bootstrap to get all of the pages looking close to the examples given in the instructions.
 
-The Git-Hub repo link is :
+The Git-Hub repo URL is :
+https://github.com/stevegebhardt/Flashcard-O-Matic
+
+The deployed site URL is:
+https://stevegebhardt-flashcard-o-matic.onrender.com
