@@ -3,7 +3,7 @@ import { readDeck } from "../utils/api";
 import { useParams, Link, useHistory } from "react-router-dom";
 import Breadcrumb from "../Breadcrumb";
 
-function Study() {
+export default function Study() {
   const { deckId } = useParams();
   const history = useHistory();
 
@@ -89,5 +89,3 @@ function Study() {
     </React.Fragment>
   );
 }
-
-export default Study;

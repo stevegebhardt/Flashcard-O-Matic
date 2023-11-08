@@ -12,7 +12,7 @@ import Breadcrumb from "../Breadcrumb";
 
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 
-function Layout() {
+export default function Layout() {
   return (
     <React.Fragment>
       <Header />
@@ -48,5 +48,3 @@ function Layout() {
     </React.Fragment>
   );
 }
-
-export default Layout;

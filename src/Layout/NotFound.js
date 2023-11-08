@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-function NotFound() {
+export default function NotFound() {
   const location = useLocation();
 
   return (
@@ -10,5 +10,3 @@ function NotFound() {
     </div>
   );
 }
-
-export default NotFound;

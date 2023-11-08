@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import { deleteDeck, listDecks } from "../utils/api";
 
-function Home() {
+export default function Home() {
   const [decks, setDecks] = useState([]);
 
   useEffect(() => {
@@ -73,5 +73,3 @@ function Home() {
     </React.Fragment>
   );
 }
-
-export default Home;

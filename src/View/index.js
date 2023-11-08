@@ -5,7 +5,7 @@ import { deleteDeck } from "../utils/api";
 import Card from "./Card";
 import Breadcrumb from "../Breadcrumb";
 
-function View() {
+export default function View() {
   const { deckId } = useParams();
 
   const [deck, setDeck] = useState({});
@@ -78,5 +78,3 @@ function View() {
     </React.Fragment>
   );
 }
-
-export default View;
